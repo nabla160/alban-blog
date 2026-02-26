@@ -1,0 +1,203 @@
+---
+title: "Silver Paste Corrosion in TOPCon Photovoltaic Cells"
+date: "2026-01-14"
+description: "Experimental study of accelerated aging of silver paste contacts in TOPCon solar cells exposed to agricultural environments (fertilisers, pesticides). Visual analysis and Raman spectroscopy."
+tags: ["Photovoltaïque", "Corrosion", "Raman", "Agrivoltaïsme", "Matériaux"]
+category: "Projet de Recherche sur une semaine"
+pdf: "/pdfs/pv-corrosion-argent.pdf"
+github: ""
+---
+
+> **Projet de recherche** — Chimie ParisTech PSL, janvier 2026
+> **Authors:** Alban Laborde-Laulhé, Lili Trum — Université PSL, Chimie-ParisTech, 11 rue Pierre et Marie Curie, 75005 Paris, France
+> **Keywords:** Photovoltaic cell, corrosion, Silver paste, Raman spectroscopy
+
+## Abstract
+
+Agrivoltaics is a rapidly growing practice that exposes photovoltaic panels to a new corrosive environment, including pesticides and fertilisers commonly used in agriculture. This study investigates the impact of sulfate-containing compounds — CuSO₄, Na₂SO₄ and NH₄HSO₄ — on the silver paste of a TOPCon solar cell. Droplets of these solutions at high concentrations were deposited on the cell surface and aged for 17 hours in a climatic chamber under controlled temperature and humidity cycles. Visual and optical microscopy observations revealed significant salt deposits preferentially crystallising on the silver fingers, as well as finger fractures caused by a combination of mechanical stress and chemical weakening. Raman spectroscopy analysis identified the formation of new corrosion products, namely silver oxide (Ag₂O) and silver sulfate, which were absent from the pristine paste. These findings indicate that agricultural chemicals promote the degradation of the silver paste, potentially reducing cell performance through both optical shading and electrical losses. However, the short aging duration and high concentrations used limit the direct applicability of these results to real field conditions, and further quantitative studies are needed to assess long-term corrosion kinetics in agrivoltaic environments.
+
+## Résumé
+
+L'agrivoltaïque est une pratique en pleine expansion, dans laquelle les panneaux photovoltaïques sont exposés à un nouvel environnement corrosif, notamment aux pesticides et aux engrais couramment utilisés dans l'agriculture. Cette étude examine l'impact des composés contenant du sulfate (CuSO₄, Na₂SO₄ et NH₄HSO₄) sur la pâte d'argent d'une cellule solaire TOPCon. Des gouttelettes de ces solutions à forte concentration ont été déposées à la surface de la cellule et vieillies pendant 17 heures dans une chambre climatique sous des cycles de température et d'humidité contrôlés. Des observations visuelles et au microscope optique ont révélé d'importants dépôts de sel se cristallisant de préférence sur les fils d'argent, ainsi que des fractures des fils causées par une combinaison de contraintes mécaniques et d'affaiblissement chimique. L'analyse par spectroscopie Raman a identifié la formation de nouveaux produits de corrosion, à savoir l'oxyde d'argent (Ag₂O) et le sulfate d'argent, qui étaient absents de la pâte neuve. Ces résultats indiquent que les produits chimiques agricoles favorisent la dégradation de la pâte d'argent, ce qui peut réduire les performances des cellules à la fois par l'ombrage optique et les pertes électriques. Cependant, la courte durée de vieillissement et les concentrations élevées utilisées limitent l'applicabilité directe de ces résultats aux conditions réelles sur le terrain, et des études quantitatives supplémentaires sont nécessaires pour évaluer la cinétique de corrosion à long terme dans les environnements agrivoltaïques.
+
+---
+
+## Introduction
+
+As the world population continues to grow, projected to reach 9.8 billion people in 2050 [1], global energy needs for food and green energy continue to increase. In this context, both solar energy and green agriculture are ways to meet this demand. Agrivoltaic in particular is an innovative concept that many states consider to develop. Thus, agrivoltaic is a part of the solar energy strategy of the European Commission which plans to make agrivoltaic 1% of European farmland for 2030 [2]. In the same way, France – the European country with the largest used agricultural area – has been encouraging and legalizing this practice since 2023 [3]. Nonetheless, this new use of solar panels comes with new challenges. Indeed, set up in farmland, electrical infrastructures are exposed to a new corrosive environment: pesticides, plant growth and ground nutrients can corrode solar panels and their structures. Our study tends to analyse the impact of compounds found in common farm products on a critical component of solar panels: the silver paste which is the electrical element that carries electrons out of the solar cells in order to put it in the energy network.
+
+<figure>
+  <img src="/images/pv-corrosion/fig1-agrivoltaics-intro.png" alt="Agrivoltaic installation" />
+  <figcaption>Fig 1 — Example of an agrivoltaic installation</figcaption>
+</figure>
+
+---
+
+## Experimental Section
+
+This study investigates a TOPCon Cell.
+
+<figure>
+  <img src="/images/pv-corrosion/fig2b-topcon-schema.png" alt="TOPCon cell schematic" />
+  <figcaption>Fig 2 — TOPCon cell studied</figcaption>
+</figure>
+
+100 µL drops of solution containing typical fertilizers and pesticides species from traditional and biological agriculture were placed on the surface of a TOPCon cell on the front side. The chosen species are:
+
+- **Na₂SO₄**: dissociates into SO₄²⁻ and Na⁺, which are corrosive; produced by industries, but also naturally present in ground water and lakes
+- **(NH₄)₂SO₄**: dissociates into SO₄²⁻ and NH₄⁺, which are corrosive; present in many fertilizers
+- **CuSO₄**: dissociates into SO₄²⁻, which is corrosive, and Cu²⁺; present in the Bordeaux mixture, a very used fungicide
+
+Except for the Bordeaux mixture, which is naturally very concentrated, two droplets of each species were used, with a concentration equal to 10 and 100 times the usual concentrations found in agricultural fields. Indeed, as the aging time in the climate chamber is quite short, it was decided to put the cell under a very corrosive environment. For the blank, the same solutions were deposited on a glass plate.
+
+| | NaCl | Na₂SO₄ | (NH₄)₂SO₄ | | CuSO₄ |
+|---|---|---|---|---|---|
+| Usual concentration (mmol/L) | 1.06 | 0.78 | 0.78 | Usual concentration (1st droplet) g/L | 10 |
+| Concentration 1 : ×10 (mmol/L) | 10.6 | 7.8 | 7.8 | Concentration ×10 (2nd droplet) g/L | 100 |
+| Concentration 2 : ×100 (mmol/L) | 106 | 78 | 78 | | |
+
+*Table 1: Concentration of solutions used as aging agents*
+
+<figure>
+  <img src="/images/pv-corrosion/fig3a-glass-blank.png" alt="Glass plate blank" />
+  <img src="/images/pv-corrosion/fig3b-cell-setup.png" alt="Cell with deposited droplets" />
+  <figcaption>Fig 3 — Blank on glass plate (left) and droplets deposited on the TOPCon cell (right)</figcaption>
+</figure>
+
+The cell was then put in a climate chamber Weiss WKL100. We used the same cycle as A. Debono in her experiment [6]: intermediate between dry heat (80°C, 15% RH)/ambient conditions and damp heat test (80°C, 85% RH). The samples were then analyzed after 17 hours in the climate chamber.
+
+<figure>
+  <img src="/images/pv-corrosion/fig4-climate-cycle.png" alt="Thermal and humidity cycle" />
+  <figcaption>Fig 4 — Thermal and humidity cycle in the climate chamber, based on A. Debono experiments [6]</figcaption>
+</figure>
+
+---
+
+## Results and Discussion
+
+### Visual Analysis
+
+<figure>
+  <img src="/images/pv-corrosion/fig5-visual-after-aging.png" alt="Cell after climate chamber aging" />
+  <figcaption>Fig 5 — Cell surface after 17 hours in the climate chamber</figcaption>
+</figure>
+
+The first visual observation after removing the photovoltaic cell from the climatic chamber is that all droplets left a visible deposit on the cell surface. In particular, the CuSO₄ solution produced such a large powdery deposit that it shifted when the cell was handled. This initial finding suggests that longer aging durations may be necessary to obtain more realistic and representative deposit conditions. Nevertheless, it already highlights a potential degradation mechanism related to pesticide exposure: these deposits reduce the amount of light reaching the silicon absorber layer, thereby decreasing the potential electrical output of the cell.
+
+<figure>
+  <img src="/images/pv-corrosion/fig6a-cuso4-deposit.png" alt="Silver finger within a CuSO₄ deposit" />
+  <figcaption>Fig 6 (a) — View of a silver finger within a CuSO₄ deposit at ×100 magnification</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig6b-na2so4-deposit.png" alt="Silver finger within a Na₂SO₄ deposit" />
+  <figcaption>Fig 6 (b) — View of a silver finger within a Na₂SO₄ deposit at ×100 magnification</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig6c-nh4so4-deposit.png" alt="Silver finger within a NH₄SO₄ deposit" />
+  <figcaption>Fig 6 (c) — View of a silver finger within a NH₄SO₄ deposit at ×100 magnification</figcaption>
+</figure>
+
+In all three cases, the salt deposit clearly reacted with the silver finger. Precipitation marks can be observed preferentially on the finger surface rather than on the silicon layer, indicating that the silver paste acts as a more favourable nucleation site for salt crystallisation. However, no obvious signs of corrosion, such as pitting, discolouration or material loss, were visible at this stage under optical microscopy, suggesting that the aging duration may have been too short to induce significant macroscopic degradation.
+
+<figure>
+  <img src="/images/pv-corrosion/fig7a-broken-finger-nh4so4.png" alt="Broken silver finger within a NH₄SO₄ deposit" />
+  <figcaption>Fig 7 (a) — Example of a broken silver finger within a NH₄SO₄ deposit at ×100 magnification</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig7b-broken-finger-na2so4.png" alt="Broken silver finger within a Na₂SO₄ deposit" />
+  <figcaption>Fig 7 (b) — Example of a broken silver finger within a Na₂SO₄ deposit at ×100 magnification</figcaption>
+</figure>
+
+Additionally, fractures of the silver finger were observed at certain locations where the deposits had been applied. These fractures are critical for the photovoltaic cell, as a broken silver finger can no longer collect the photogenerated current from the area it covers, resulting in a direct loss of electrical performance. The presence of a crystalline or solid phase adjacent to the fracture site suggests that a mechanical factor contributed to the breakage: as the deposit dried and crystallised, it likely exerted mechanical stress on the silver paste. However, it is also probable that the deposit acted chemically on the silver paste, weakening its structure and promoting delamination, which ultimately facilitated the fracture.
+
+### Raman Spectroscopy
+
+Raman spectroscopy is a non-destructive chemical analysis method which provides information about chemical structure and identity, phase and polymorphism, stress, and impurities. Light is sent in bulk. Depending on its wavelength, the light is going to make some bonds vibrate at different frequencies. A photon is absorbed, and another one, with a different energy, is emitted. In the end, we obtain a spectrum giving the intensity of each wave number. Each spectra is specific to species and their concentration.
+
+<figure>
+  <img src="/images/pv-corrosion/fig8a-raman-microscope.png" alt="Renishaw inVia Raman Microscope" />
+  <figcaption>Fig 8 — Renishaw inVia Raman Microscope used for acquisition (λ = 532 nm)</figcaption>
+</figure>
+
+The Raman spectra and Raman mapping were acquired with a Renishaw inVia Raman Microscope with green laser (λ = 532 nm, maximum power = 100 mW). Acquisitions lasted 10 seconds with two accumulations, 1% or 5% of the maximum power laser and a ×20 objective.
+
+#### Silver Paste Before and After Aging
+
+To observe silver oxidation, we can first look at the Raman spectrum of a pristine silver paste. All the results here come from Rayen Alaoua's studies [9].
+
+<figure>
+  <img src="/images/pv-corrosion/fig9-pristine-spectrum.png" alt="Raman spectrum of pristine silver paste" />
+  <figcaption>Fig 9 — Raman spectrum of pristine silver paste [9]</figcaption>
+</figure>
+
+We can identify several species that are known to be in the silver paste: tellure oxides have peaks at 671 and 733 cm⁻¹ and sulfate shows a broad peak at 960 cm⁻¹. The peak around 1200 cm⁻¹ stands for a carbon-hydrogen bond and comes from the binder in the paste. However, it is not possible to attribute with certainty the peaks at 78, 119 and 155 cm⁻¹, as bismuth and silver sulfides have quite similar peaks. Indeed, bismuth oxide can show several peaks between 50 and 150 cm⁻¹, notably at 82, 118 and 153 cm⁻¹ [10,11], whereas Ag₂S also has a sharp peak at 65 cm⁻¹ [12].
+
+However, no matter if those peaks should be attributed to BiO₃ or Ag₂S, this spectra remains interesting as it shows the initial species present in the pristine silver paste that can appear in a Raman analysis. We can then compare it with an aged silver paste to see which species appeared or disappeared.
+
+<figure>
+  <img src="/images/pv-corrosion/fig10-aged-spectrum.png" alt="Raman spectrum of aged silver paste" />
+  <figcaption>Fig 10 — Raman spectrum of silver paste after aging</figcaption>
+</figure>
+
+After aging, the silver paste gives quite a similar spectra than before. The main difference is the peak at 231 cm⁻¹, which can be attributed to Ag₂O [13,14]. Therefore, we can assert that the material has oxidised.
+
+#### Peak Attribution
+
+<figure>
+  <img src="/images/pv-corrosion/fig11-peak-attribution.png" alt="Summary of known peak attributions" />
+  <figcaption>Fig 11 — Summary of Raman peak attributions for the silver paste</figcaption>
+</figure>
+
+#### Accelerated Aging by Pesticides and Fertilisers
+
+After aging under a drop of pesticide, several observations can be made on the Raman spectra:
+
+- Some peaks are identical as on the pristine silver paste spectra: bismuth oxide (possibly overlapping with silver sulfite) and tellurium oxide seem not to be affected by the pesticide.
+- The peaks of sulfate get sharper. Indeed, the aging solutions contain sulfate.
+- The peaks highlighted in blue stand for the silicium of the layer under the silver paste.
+- However, new peaks are observed on each spectra, namely around 229 cm⁻¹. This is a characteristic peak of silver oxide. Nevertheless, for the aging with Na₂SO₄, this peak is shifted to the left. We can suppose that it is overlapping with a peak of silver sulfate (normally at 242 cm⁻¹). Indeed, every solution brings some sulfate. We can suppose that it also reacts with silver, forming even more silver sulfate than before. As a result, the peak at 242 cm⁻¹ gets sharper, and a new peak can even be observed at 724 cm⁻¹ on the NH₄SO₄ spectra.
+
+Actually, we can suppose that sulfite also contributes to oxidation. It can indeed be reduced following this equilibrium [15]:
+
+$$2\mathrm{SO_4^{2-}} = 2\mathrm{O^{2-}} + 3\mathrm{O_2} + 2\mathrm{S}$$
+
+The resulting species can then diffuse into the silver paste and react to form silver sulfite and silver oxide.
+
+<figure>
+  <img src="/images/pv-corrosion/fig12a-spectrum-nacl.png" alt="NaCl spectrum" />
+  <figcaption>Fig 12 (a) — Raman spectrum after aging under NaCl</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig12b-spectrum-na2so4.png" alt="Na₂SO₄ spectrum" />
+  <figcaption>Fig 12 (b) — Raman spectrum after aging under Na₂SO₄</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig12c-spectrum-nh4so4.png" alt="(NH₄)₂SO₄ spectrum" />
+  <figcaption>Fig 12 (c) — Raman spectrum after aging under (NH₄)₂SO₄</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig12d-spectrum-cuso4.png" alt="CuSO₄ spectrum" />
+  <figcaption>Fig 12 (d) — Raman spectrum after aging under CuSO₄</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig12e-spectrum-extra1.png" alt="Extended spectrum 1" />
+  <figcaption>Fig 12 (e) — Extended Raman spectrum</figcaption>
+</figure>
+<figure>
+  <img src="/images/pv-corrosion/fig12f-spectrum-extra2.png" alt="Extended spectrum 2" />
+  <figcaption>Fig 12 (f) — Extended Raman spectrum</figcaption>
+</figure>
+
+*Highlight caption: yellow = silver paste initial component; green = sulfate; red = product of silver corrosion; pink = silver sulfite; blue = silicium*
+
+---
+
+## Conclusion
+
+Finally, this study aimed to simulate an agricultural environment on a TOPCon cell to observe the aging of the silver paste under exposure to common pesticide and fertiliser compounds (CuSO₄, Na₂SO₄, NH₄HSO₄).
+
+Visual analysis first revealed that all solutions left significant deposits on the cell surface, with preferential salt crystallisation on the silver fingers rather than on the silicon layer. More critically, fractures of silver fingers were observed at several deposit locations, resulting from a combination of mechanical stress — induced by the crystallisation of the drying deposits — and possible chemical weakening of the paste. These fractures represent a direct threat to cell performance, as broken fingers can no longer collect photogenerated current.
+
+The Raman spectra showed clear differences between the pristine and aged silver paste: new peaks appeared, notably around 229 cm⁻¹ and 724 cm⁻¹, which can be attributed to silver oxide (Ag₂O) and silver sulfate respectively. This indicates that sulfate ions from the aging solutions diffused into the silver paste and reacted with silver, while sulfate decomposition may have also contributed to oxidation by releasing oxygen species. These results demonstrate that pesticides and fertilisers create an aggressive chemical environment for photovoltaic cells, which will consequently age faster in an agrivoltaic context.
+
+Nevertheless, this study presents several limitations. First, the aging duration (17 hours) was relatively short, and higher-than-realistic concentrations were used to compensate, making the results difficult to extrapolate to real field conditions. Second, the analysis remained qualitative: further studies with longer aging times and varying concentrations would be necessary to quantify the corrosion kinetics. Finally, silver remains a noble metal that does not corrode easily, and the observed corrosion products — silver oxide and silver sulfate — were identified based on the most probable Raman peak attributions. Other corrosion mechanisms or reaction products may have been overlooked and would require complementary techniques such as SEM-EDS or XRD to be fully characterised.

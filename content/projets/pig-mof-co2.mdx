@@ -1,0 +1,200 @@
+---
+title: "Composites MOF/Polymère pour la Capture du CO₂ en Présence d'Eau"
+date: "2025-10-01"
+description: "Projet d'Innovation en Groupe commandé par le CNRS (IMAP) : synthèse d'un composite CALF-20/polysulfone hydrophobe pour améliorer la capture sélective du CO₂ en conditions humides."
+tags: ["MOF", "CO₂", "Chimie des matériaux", "Innovation", "CNRS"]
+category: "Projet d'Innovation en Groupe"
+pdf: "/pdfs/pig-mof-co2.pdf"
+github: ""
+status: "en-cours"
+---
+
+> **Projet en cours** — Rapport Proposition, octobre 2025
+> **PIG Groupe n°8** — Chimie ParisTech PSL
+> **Commandé par :** M. Georges Mouchaham — IMAP, CNRS
+> **Équipe :** Felipe Ávila Gama, Ana Flávia de Oliveira Ribeiro, Marc Jegou, Alban Laborde-Laulhé, Ilan Llug, Marc-Antoine Morel, Laure Ravet
+> **Tuteurs :** Davide Raffaele Ceratti, Lili Trum \
+> **Note COPIL Innovation :** 17/20
+
+>Ce projet est actuellement en cours. Cette page présente le rapport de proposition soumis à mi-échéance du projet.
+
+---
+
+## Introduction
+
+Malgré les enjeux climatiques actuels, de nombreux pays prévoient d'ouvrir de nouvelles centrales à gaz ou à charbon pour répondre à leurs besoins énergétiques. Il est donc crucial de développer des technologies capables de capter le CO₂ produit en aval, avant son rejet dans l'atmosphère.
+
+La capture du CO₂ par les **MOFs** (Metal-Organic Frameworks) se fait par physisorption ou par chimisorption, en fonctionnalisant les MOFs avec des amines. Ces matériaux sont prometteurs mais se heurtent à un problème majeur en conditions réelles : les **effluents industriels contiennent de la vapeur d'eau**, et les molécules d'eau entrent en compétition directe avec le CO₂ pour occuper les sites d'adsorption. Cela réduit l'efficacité du MOF et augmente le coût énergétique de régénération.
+
+**Objectif du projet :** synthétiser un composite combinant un MOF sélectif au CO₂ (le CALF-20) et un liant polymère hydrophobe, afin de **limiter l'adsorption d'eau** tout en conservant les performances de capture du CO₂.
+
+---
+
+## Présentation des MOFs et état de l'art
+
+Les MOFs sont des matériaux cristallins hybrides formés par des ligands organiques coordonnés à des ions ou clusters métalliques. Leur **grande surface spécifique** (jusqu'à plusieurs milliers de m²/g), leur **porosité contrôlée** et leur **modularité chimique** en font des candidats de choix pour la capture de gaz.
+
+L'adsorption se caractérise par l'**enthalpie d'adsorption** ($\Delta H_{\mathrm{ads}}$), énergie libérée lors de la fixation d'une molécule sur le matériau. Dans les adsorbants physiques, la présence d'eau pose un problème car $H_2O$ et $CO_2$ sont toutes deux des molécules polaires qui se disputent les mêmes sites actifs.
+
+### Méthodes de synthèse des MOFs
+
+Cinq principales voies de synthèse existent :
+
+| Méthode | Principe |
+|---|---|
+| **Solvothermale** | Réaction en solvant organique sous pression et température élevées |
+| **Microondes** | Accélération de la cristallisation par irradiation microondes |
+| **Sonochimique** | Réduction du temps de cristallisation par ultrasons |
+| **Électrochimique** | Pas de sels métalliques requis ; économe en énergie |
+| **Mécanochimique** | Sans solvant (ou très peu), broyage solide-solide |
+
+### Le CALF-20 — un MOF particulièrement prometteur
+
+Le **Calgary Framework 20** (CALF-20, $[\mathrm{Zn_2(1{,}2{,}4\text{-triazolate})_2(oxalate)}]$) est un MOF reconnu pour son efficacité dans l'adsorption sélective du CO₂ à partir d'effluents industriels. Il est synthétisé principalement par voie solvothermale.
+
+<figure>
+  <img src="/images/pig-mof-co2/calf20-structure.png" alt="Structure du CALF-20" />
+  <figcaption>Structure du CALF-20</figcaption>
+</figure>
+
+| Paramètre | Valeur typique |
+|---|---|
+| Surface spécifique (BET) | ~550 m²·g⁻¹ |
+| Largest Cavity Diameter (LCD) | ~3,5–4,5 Å |
+| Pore Limiting Diameter (PLD) | ~3 Å |
+| Volume poreux total | ~0,20 cm³·g⁻¹ |
+
+Sa topologie est connue pour être **flexible** : elle change avec l'adsorption de molécules dans ses pores. Sa capacité d'adsorption du CO₂ est de **2,6 mmol/g à 0,15 bar et 298 K**, avec une bonne sélectivité $\mathrm{CO_2/N_2}$. Il est déjà produit industriellement par BASF.
+
+### Stratégies d'amélioration de l'hydrophobie des MOFs
+
+La littérature propose plusieurs approches pour réduire l'affinité des MOFs pour l'eau :
+
+- **Liants polymères** (PVDF, polysulfone, CMC) sous forme de membranes à matrice mixte (MMM) ou de billes
+- **Membranes MOF/solvant** (ex. combinaison avec un liquide ionique)
+- **Composites MOF@MOF** (combinaison de deux MOFs aux propriétés complémentaires)
+- **Revêtement silane** sur MOF fonctionnalisé à l'éthylènediamine
+- **Revêtement PDMS** (polydiméthylsiloxane) — testé sur HKUST-1, MOF-5 et ZIF-8
+- **Revêtement PVDF** — protège la structure du MOF fer-aluminium formate
+
+Ces six approches donnent des résultats similaires en adsorption de CO₂ (~1 à 4 mmol/g), mais diffèrent en robustesse, facilité de mise en œuvre et impact environnemental.
+
+---
+
+## Proposition principale — Composite CALF-20 / Polysulfone
+
+### Cahier des charges
+
+Le matériau cible doit satisfaire les contraintes suivantes :
+
+- **Écologie :** recyclable, non toxique, réactifs non CMR, énergie minimisée
+- **Performance :** capture sélective du CO₂ sur un site industriel, captation d'eau minimisée
+- **Durabilité :** résistance mécanique, stabilité sur plusieurs cycles d'adsorption/régénération, faible coût énergétique de régénération
+- **Mise en forme :** compatible avec une installation industrielle (billes, pellets, membranes)
+
+### Choix du liant : la Polysulfone (PSF)
+
+Parmi les liants étudiés (DES, PVDF, CMC, polysulfone), notre choix s'est porté sur la **polysulfone (Poly(bisphénol-A sulfone))**, pour les raisons suivantes :
+
+- Faible solubilité dans l'eau → caractère hydrophobe
+- Bonne compatibilité avec le solvant vert **Cyrène** (dihydrolévoglucosenone), alternative biosourcée au DMF
+- Utilisation documentée dans des composites MOF/polymère pour la séparation de gaz
+
+### Protocole 1 — Composite à partir de la poudre de CALF-20
+
+*Adapté de Zhang, Jinfeng, et al. et Wang, Lingyu, et al.*
+
+1. Agiter la poudre de CALF-20 dans le Cyrène jusqu'à dispersion homogène
+2. Ajouter progressivement la PSF (Poly(bisphénol-A sulfone))
+3. Agiter le milieu réactionnel **10 h à 110 °C** (éviter les hautes températures → condensation aldolique du Cyrène)
+4. Mise en forme par phase inverse (billes)
+
+**Quantités :**
+
+| Réactif | Quantité |
+|---|---|
+| Poudre CALF-20 | 1000 mg |
+| Cyrène | 3 mL |
+| PSF (10 %wt en MOF) | 100 mg |
+
+### Protocole 2 — Synthèse in situ du CALF-20 (MMMs)
+
+*Adapté de Zhang, Jinfeng, et al.*
+
+Formation directe du CALF-20 en présence de la PSF dans le Cyrène :
+
+1. Mélanger le **1,2,4-triazole** et le $\mathrm{Zn(NO_3)_2 \cdot 6H_2O}$ dans le Cyrène
+2. Ajouter la PSF
+3. Ajouter **2 éq. de triéthylamine** (favorise la déprotonation du ligand et la formation du MOF)
+4. Chauffer **10 h à 110 °C**
+5. Laver le précipité 3 × 10 mL de méthanol
+
+**Quantités :**
+
+| Réactif | Quantité |
+|---|---|
+| 1,2,4-triazole | 400,0 mg (0,487 mmol) |
+| $\mathrm{Zn(NO_3)_2 \cdot 6H_2O}$ | 678,0 mg (0,228 mmol) |
+| PSF | 100 mg |
+| Cyrène | 3 mL |
+| Triéthylamine | 0,12 mL (2 éq.) |
+| Méthanol (lavage) | 3 × 10 mL |
+
+### Mise en forme — Billes par phase inverse/gouttage
+
+La mise en forme en **billes** est préférable aux membranes pour une application industrielle (meilleur contact gaz/solide, débit contrôlé). La méthode de phase inverse requiert un bain de coagulation satisfaisant :
+- Ne pas dissoudre la PSF
+- Ne pas réagir avec le Cyrène ni le CALF-20
+- Solidifier rapidement la PSF
+
+Les billes sont formées à l'aide d'une seringue dans le bain de coagulation, maintenues 30 min, filtrées, séchées à l'air puis sous vide.
+
+### Renforcement de l'hydrophobie — Revêtement en suie
+
+Pour renforcer l'hydrophobie de la PSF, un revêtement de **suie de bougie** peut être appliqué (d'après S. Yuan et al.) :
+
+1. Collecter la suie en plaçant une plaque métallique à 2 cm au-dessus d'une bougie pendant 10 min
+2. Disperser la suie dans le Cyrène (0,1 %wt) par sonication 30 min
+3. Déposer la solution sur le composite séché
+
+Ce traitement a permis d'améliorer l'**angle de contact avec l'eau de 89° à 124°**, attestant d'un net gain d'hydrophobie.
+
+---
+
+## Proposition de secours — Composite CALF-20 / PVDF
+
+Si la solution PSF ne fonctionnait pas, la seconde option est d'utiliser le **PVDF** (polyfluorure de vinylidène) comme liant. Des résultats prometteurs ont été publiés pour des composites MOF@PVDF. Cette piste est cependant moins prioritaire car elle nécessite des solvants fluorés (NMP, DMF) en contradiction avec les objectifs de chimie verte.
+
+---
+
+## Caractérisations prévues
+
+| Analyse | Information visée |
+|---|---|
+| **DRX** | Cristallinité du CALF-20 dans le composite (structure conservée ?) |
+| **BET** | Surface spécifique et volume poreux du composite |
+| **ATG** | Stabilité thermique, taux d'incorporation du MOF |
+| **ATR-IR** | Groupements chimiques présents, interaction MOF/polymère |
+| **Angle de contact** | Hydrophobie de la surface |
+| **Isothermes $\mathrm{CO_2/H_2O}$** | Sélectivité de capture en conditions humides |
+
+---
+
+## Retour COPIL Innovation — 17/20
+
+| Critère | Note |
+|---|---|
+| Précision du cahier des charges | 4,5/5 |
+| Bibliographie | 5/5 |
+| Rigueur scientifique | 3,5/5 |
+| Quantité de travail | 4/5 |
+
+**Commentaires :** L'objectif et la problématique sont clairement posés. Le travail bibliographique est conséquent et prend en compte l'évolution du domaine. Les différentes solutions sont bien exposées. La rigueur scientifique pourrait être renforcée par une analyse plus approfondie des mécanismes d'interaction MOF/polymère. Les manipulations se feront dans les laboratoires de l'ENS, en attente de la confirmation de M. De Montarnal.
+
+---
+
+## Perspectives
+
+La prochaine étape consiste à réaliser les synthèses et à caractériser les composites obtenus. Après une première expérience à 10 %wt de CALF-20 par rapport au polymère, si elle est concluante, la proportion de MOF sera augmentée progressivement pour optimiser les performances.
+
+Une piste complémentaire, issue de la littérature, suggère de combiner différents MOFs (core-shell MOF@MOF) pour tirer parti de propriétés complémentaires — notamment un cœur à haute capacité d'adsorption de CO₂ et une coquille hydrophobe.

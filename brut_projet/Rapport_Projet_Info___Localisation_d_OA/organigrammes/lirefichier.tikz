@@ -1,0 +1,54 @@
+\begin{tikzpicture}[organi, node distance=8mm and 14mm]
+\tikzset{organi/.style={font=\small, line width=0.6pt}}
+% 1 : Début
+\node[startstop] (start) {Début};
+
+% 2 : Entrées
+\node[io, below=8mm of start] (in) {Entrées : \texttt{path}, \texttt{*E}, \texttt{**aoParAtome}, \texttt{*natoms\_out}, \texttt{*ev\_out}};
+\draw[arrow] (start) -- (in);
+
+% 3 : Ouvrir fichier
+\node[process, below=8mm of in] (open) {Ouvrir le fichier \\ \texttt{f = fopen(path,"r")}};
+\draw[arrow] (in) -- (open);
+
+% 4 : Lire natoms
+\node[process, below=8mm of open] (readn) {Lire le nombre d'atomes $\rightarrow$ \textbf{\texttt{natoms}}};
+\draw[arrow] (open) -- (readn);
+
+% 5 : Allouer
+\node[process, below=8mm of readn] (alloc) {Allouer \textbf{\texttt{aoParAtome[natoms]}} si demandé};
+\draw[arrow] (readn) -- (alloc);
+
+% 6 : Boucle atomes
+\node[loop, below=8mm of alloc] (loopatoms) {Boucle $i = 1..$ \texttt{natoms} :\\
+Lire $Z$, déterminer le nombre d'AO,\\
+remplir \texttt{aoParAtome[i]}, cumuler $\rightarrow$ \textbf{\texttt{nAO}}};
+\draw[arrow] (alloc) -- (loopatoms);
+
+% 7 : Créer matrices
+\node[process, below=8mm of loopatoms] (createE) {Créer \textbf{\texttt{E}} (\texttt{nAO$\times$nAO}) et \textbf{\texttt{ev\_out}} (\texttt{nAO$\times$1})};
+\draw[arrow] (loopatoms) -- (createE);
+
+% 8 : Boucle ORBITAL
+\node[loop, below=8mm of createE] (looporb) {Boucle sur les lignes \texttt{ORBITAL} :\\
+extraire énergie $\rightarrow$ \textbf{\texttt{ev\_out[i]}} ;\\
+lire \texttt{nAO} coefficients $\rightarrow$ remplir la colonne $i$ de \texttt{E};\\
+incrémenter $i$, compter \texttt{ORBITAL}};
+\draw[arrow] (createE) -- (looporb);
+
+% 9 : Sorties
+\node[dataout, below=8mm of looporb] (outs) {\textbf{Sorties :}\\
+\texttt{*E} : coefficients OA$\rightarrow$OM\\
+\texttt{*ev\_out} : énergies des OM (eV)\\
+\texttt{**aoParAtome} : nb d’AO par atome\\
+\texttt{*natoms\_out = natoms}\\
+compteur \texttt{ORBITAL}};
+\draw[arrow] (looporb) -- (outs);
+
+% 10 : Fin
+\node[startstop, below=8mm of outs] (end) {Fin \& \texttt{return 1}};
+\draw[arrow] (outs) -- (end);
+
+\end{tikzpicture}
+
+

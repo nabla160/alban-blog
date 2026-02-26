@@ -1,0 +1,234 @@
+---
+title: "Localisation d'Orbitales Moléculaires (POPLOC)"
+date: "2025-10-12"
+description: "Implémentation en C de l'algorithme POPLOC pour localiser les orbitales moléculaires délocalisées de CH₄, dans le cadre du projet informatique FL05 à Chimie ParisTech."
+tags: ["C", "Chimie Quantique", "Orbitales Moléculaires", "Algèbre Linéaire", "Projet Info"]
+category: "Informatique"
+pdf: "/pdfs/projet-info-localisation-om.pdf"
+github: ""
+---
+
+> **Projet Informatique FL05** — Chimie ParisTech PSL, octobre 2025
+> Réalisé avec **Mattéo Fabrici**
+
+## Introduction
+
+L'étude des orbitales moléculaires constitue un outil essentiel en chimie quantique pour comprendre la structure électronique des molécules. Toutefois, les orbitales issues de la résolution de l'équation de Schrödinger sont généralement **délocalisées** — ce qui les rend peu interprétables chimiquement, car elles ne représentent pas directement les liaisons ou les doublets non liants.
+
+Pour pallier cette difficulté, nous avons implémenté la méthode **POPLOC** (*population localised orbitals*), qui transforme les orbitales délocalisées en orbitales localisées (LMO) directement interprétables en termes de liaisons chimiques, sans recourir à des intégrales biélectroniques coûteuses.
+
+Le programme, écrit en **C**, prend en entrée un fichier `.mgf` contenant les coefficients LCAO des orbitales moléculaires délocalisées, et restitue un fichier `.mgf` modifié avec les orbitales localisées correspondantes.
+
+### Rappel des hypothèses
+
+**Hypothèse LCAO.** Chaque orbitale moléculaire s'écrit comme combinaison linéaire d'orbitales atomiques (OA) :
+
+$$\psi_{\mathrm{OM}}(\mathbf{r}) = \sum_{i=1}^{N} c_i\,\phi_i(\mathbf{r})$$
+
+**Invariance de l'espace occupé.** Les orbitales occupées peuvent subir une transformation unitaire sans modifier la densité électronique ni l'énergie totale, car elles décrivent le même espace vectoriel (déterminant de Slater). Ce n'est pas le cas des vacantes : les mélanger avec des occupées changerait la densité et l'énergie.
+
+Nous avons appliqué cette méthode à **CH₄**, une petite molécule sans doublets non liants (quatre liaisons C-H à localiser).
+
+---
+
+## Architecture du programme
+
+Le projet est structuré en trois modules :
+
+```
+projet/
+├── src/
+│   ├── main.c
+│   ├── gestionfichier.c
+│   └── matrice.c
+├── includes/
+│   ├── main.h
+│   ├── gestionfichier.h
+│   └── matrice.h
+├── data/
+│   ├── CH4.mgf
+│   └── liaison.csv
+└── output/
+    └── CH4_output.mgf
+```
+
+- **`matrice.c`** — opérations matricielles (produit, transposée, diagonalisation de Jacobi, etc.)
+- **`gestionfichier.c`** — lecture/écriture du format `.mgf`
+- **`main.c`** — algorithme POPLOC principal
+
+---
+
+## Méthode algorithmique
+
+### Principe général
+
+L'objectif est de construire, à partir de la matrice E[OA][OM] des coefficients LCAO, une nouvelle matrice E'[OA][OM] dont les colonnes représentent les orbitales localisées.
+
+Pour le méthane, E est une matrice 8×8 (8 OA : 1 couche s du C + 3 couche p du C + 4 × 1s des H, et 8 OM).
+
+Pour chaque liaison C–H entre les atomes $i$ et $j$, on construit la matrice **R** en conservant uniquement les lignes de $E$ correspondant aux OA des atomes *non impliqués* dans la liaison :
+
+$$R = P_{\mathcal{N}}\, E$$
+
+où $P_{\mathcal{N}}$ est le projecteur qui élimine les OA locales à la liaison. Physiquement, $R$ mesure la **population électronique délocalisée** hors de la région que l'on cherche à localiser.
+
+On cherche ensuite le vecteur $X$ (combinaison linéaire des OM occupées) qui **maximise** la concentration électronique sur la liaison, c'est-à-dire le vecteur propre associé à la **plus petite valeur propre** de la matrice symétrique $R^\top R$ :
+
+$$R^\top R\, X = \lambda_{\min}\, X$$
+
+L'orbitale localisée correspondante est alors :
+
+$$L = E\, X$$
+
+En répétant cette procédure pour les quatre liaisons C–H et en moyennant les matrices obtenues, on construit $E' = E\,\widetilde{X}$.
+
+### Structure de données `Matrice`
+
+```c
+typedef struct {
+    int n;          // nombre de lignes
+    int m;          // nombre de colonnes
+    long double** data;
+} Matrice;
+```
+
+Cette structure auto-porteuse simplifie les entrées/sorties des fonctions et facilite le débogage (les dimensions sont toujours accessibles).
+
+### Fonctions principales
+
+**`lireMGF`** — lecture du fichier `.mgf`
+
+```c
+int lireMGF(const char *path, Matrice *E, int **aoParAtome, int *natoms_out);
+```
+
+Lit le fichier `CH4.mgf`, détermine le nombre d'atomes et d'OA selon la période de chaque élément (H → 1 OA, C/N/O/F → 4 OA), puis construit la matrice E.
+
+**`ecrireMGF`** — réécriture du fichier `.mgf`
+
+```c
+int ecrireMGF(const char *in_path, const char *out_path, const Matrice *E, int nAO);
+```
+
+Recopie le fichier d'entrée ligne par ligne en remplaçant les coefficients des blocs `ORBITAL` par les nouvelles valeurs calculées.
+
+**`vpJacobi`** — diagonalisation par la méthode de Jacobi
+
+```c
+void vpJacobi(Matrice a, Matrice b);
+```
+
+Diagonalise la matrice symétrique réelle `a` ; `b` reçoit la matrice des vecteurs propres. Implémentée à partir de l'algorithme des rotations de Jacobi (convergence garantie pour les matrices symétriques réelles).
+
+**`maxVP` / `minVP`** — extraction de la valeur propre extremale
+
+```c
+double maxVP(Matrice colVP, int *pos_out);
+```
+
+Renvoie la valeur propre minimale (en valeur absolue) et son indice, utilisé pour identifier le vecteur propre X associé à la plus grande localisation.
+
+---
+
+## Organigramme
+
+<figure>
+  <img src="/images/projet-info-om/Organigramme---Projet-Info.png" alt="Organigramme du programme POPLOC" />
+  <figcaption>Organigramme du programme POPLOC</figcaption>
+</figure>
+
+---
+
+## Résultats et analyse
+
+À la fin de l'exécution, le programme produit `CH4_output.mgf` en ne modifiant que les 4 premières colonnes (OM occupées). Les 4 OM vacantes restent inchangées.
+
+### Visualisation via JMOL
+
+Les orbitales avant et après localisation sont comparées ci-dessous (commandes JMOL utilisées : `mo fill` + `mo translucent 0.5`).
+
+### OM 1
+
+| Avant (délocalisée) | Après (localisée) |
+|---|---|
+| ![OM 1 initiale](/images/projet-info-om/MO-1---CH4.png) | ![OM 1 sortie](/images/projet-info-om/Sortie_MO-1---CH4.png) |
+
+L'OM 1 initiale ressemblait à la 2s du carbone (coefficient dominant > 99 % sur la 2s_C). En sortie, elle est **localisée sur la liaison C–H₁** avec une belle hybridation sp³. Cela illustre que les représentations surfaciques seules peuvent être trompeuses : les électrons occupent exclusivement le volume défini par l'OM localisée.
+
+### OM 2
+
+| Avant | Après |
+|---|---|
+| ![OM 2 initiale](/images/projet-info-om/MO-2---CH4.png) | ![OM 2 sortie](/images/projet-info-om/Sortie_MO-2bis---CH4.png) |
+
+Les lobes bleus englobaient déjà la liaison C–H ; après localisation, ils la recouvrent en exclusivité, avec les lobes rouges adoptant la forme sp³.
+
+### OM 3
+
+| Avant | Après |
+|---|---|
+| ![OM 3 initiale](/images/projet-info-om/MO-3---CH4.png) | ![OM 3 sortie](/images/projet-info-om/Sortie_MO-3bis---CH4.png) |
+
+À première vue la visualisation semble atypique, mais le lobe rouge est parfaitement localisé sur la liaison C–H, résultant d'un recouvrement sp³. Le signe des lobes n'est pas significatif physiquement.
+
+### OM 4
+
+| Avant | Après |
+|---|---|
+| ![OM 4 initiale](/images/projet-info-om/MO-4---CH4.png) | ![OM 4 sortie](/images/projet-info-om/Sortie_MO-4bis---CH4.png) |
+
+Même comportement cohérent que l'OM 2.
+
+### OM 5 à 8 — orbitales vacantes (non modifiées)
+
+Les quatre OM non occupées restent intactes, confirmant que le programme respecte bien la contrainte d'invariance.
+
+<figure>
+  <img src="/images/projet-info-om/MO-5---CH4.png" alt="OM 5" />
+  <figcaption>OM 5</figcaption>
+</figure>
+<figure>
+  <img src="/images/projet-info-om/MO-6---CH4.png" alt="OM 6" />
+  <figcaption>OM 6</figcaption>
+</figure>
+<figure>
+  <img src="/images/projet-info-om/MO-7---CH4.png" alt="OM 7" />
+  <figcaption>OM 7</figcaption>
+</figure>
+<figure>
+  <img src="/images/projet-info-om/MO-8---CH4.png" alt="OM 8" />
+  <figcaption>OM 8</figcaption>
+</figure>
+
+### Critère de validation
+
+La localisation est réussie si, pour chaque OM occupée :
+
+1. Seuls les coefficients des **deux atomes de la liaison** sont non négligeables (les autres doivent être < 10⁻²).
+2. La normalisation est vérifiée : $\sum_{i=1}^{8} C_i^2 = 1$.
+
+### Test sur NH₃
+
+Un test sur NH₃ a révélé un **problème de dégénérescence des valeurs propres** lié au doublet non liant de l'azote. Par manque de temps, ce cas n'a pas été résolu, mais il correspond exactement au cas discuté dans la publication de référence POPLOC.
+
+---
+
+## Fichiers `.mgf` entrée/sortie
+
+| CH₄ entrée | CH₄ sortie |
+|---|---|
+| ![CH4.mgf](/images/projet-info-om/img_CH4_mgf.png) | ![CH4_out.mgf](/images/projet-info-om/img_CH4-out_mgf.png) |
+
+| NH₃ entrée | NH₃ sortie |
+|---|---|
+| ![NH3.mgf](/images/projet-info-om/img_NH3_mgf.png) | ![NH3_out.mgf](/images/projet-info-om/img_NH3-out_mgf.png) |
+
+---
+
+## Conclusion
+
+L'application de POPLOC sur CH₄ est concluante : les quatre OM occupées sont localisées sur les liaisons C–H avec une hybridation sp³ nette, et les quatre vacantes restent intactes.
+
+Le principal écart par rapport à la publication est le choix de **maximiser** la population locale (construire R avec les OA des atomes de liaison plutôt que des autres), ce qui s'est avéré plus pratique à implémenter tout en donnant les mêmes résultats.
+
+**Perspectives :** traitement des dégénérescences (cas NH₃, doublets non liants), extension aux molécules contenant des éléments de période 3, interface en ligne de commande pour passer le fichier `.mgf` en argument.

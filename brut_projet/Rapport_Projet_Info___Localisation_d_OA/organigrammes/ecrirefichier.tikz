@@ -1,0 +1,69 @@
+% Losange (style de base)
+\tikzset{decision/.style={diamond,aspect=2,draw,align=center,fill=red!5,inner sep=1.6pt}}
+% Flèches : accroche nette aux nœuds (pas de “trous” d’1 px)
+\tikzset{arrow/.style={-Latex, line width=0.6pt, shorten >=-1pt, shorten <=-1pt}}
+\tikzset{organi/.style={font=\small, line width=0.6pt}}
+
+\begin{tikzpicture}[organi, x=1cm, y=1cm]
+
+% Rails latéraux et colonne centrale
+\def\xC{0}        % centre
+\def\xL{-9}       % rail gauche (branche Non de ORBITAL)
+\def\xRret{ 6}    % rail droit pour le RETOUR (orbproc -> readln)
+\def\xRfin{ 6.5}  % rail droit pour la FIN (EOF/Non -> close)
+
+% ===== Colonne centrale (alignée & espacée) =====
+\node[startstop]                   (start)   at (\xC,  0.0)  {Début};
+\node[io,      minimum width=74mm] (in)      at (\xC, -2.6)  {Entrées : \texttt{in\_path}, \texttt{out\_path}, \texttt{E} ($nAO\times nAO$), \texttt{nAO}};
+\node[process, minimum width=74mm] (open)    at (\xC, -5.4)  {Ouvrir \texttt{in} (r) et \texttt{out} (w) ; init \texttt{mo=0}};
+\node[process, minimum width=74mm] (readln)  at (\xC, -8.2)  {Lire une ligne : \texttt{fgets(line,in)} ; \texttt{q = lskip(line)}};
+
+% IF 1 : EOF ?
+\node[decision,minimum width=30mm] (more)    at (\xC, -10.0) {EOF ?};
+
+% IF 2 : ORBITAL ?
+\node[decision,minimum width=30mm] (isorb)   at (\xC, -12.2) {Ligne \\ \texttt{ORBITAL} ?};
+
+% Branche Non (à gauche) pour ORBITAL ?
+\node[process, minimum width=74mm] (copyline) at (\xL, -14.4) {Recopier la ligne : \texttt{fputs(line,out)}};
+
+% Branche Oui : traitement bloc ORBITAL (condensé)
+\node[loop, minimum width=74mm] (orbproc)  at (\xC, -15.2)
+  {Traiter le bloc \texttt{ORBITAL} :\\
+   boucler sur \texttt{mo} lignes ; \texttt{k = count\_doubles\_in\_line} ;\\
+   si \texttt{k==0} $\Rightarrow$ recopier, sinon écrire \texttt{E[got][mo]}\\ ; maj \texttt{got} ;\\
+   répéter jusqu’à \(\texttt{got} = \texttt{nAO}\) ; puis \texttt{mo++}};
+
+% Clôture
+\node[startstop, minimum width=74mm] (close)    at (\xC, -18.5) {Fermer \texttt{in} et \texttt{out} ; \texttt{return 0}};
+
+% ===== Liaisons (orthogonales, sur ancres) =====
+\draw[arrow] (start.south) -- (in.north);
+\draw[arrow] (in.south)    -- (open.north);
+\draw[arrow] (open.south)  -- (readln.north);
+
+% IF "EOF ?"
+\draw[arrow] (readln.south) -- (more.north);
+% Oui -> continuer : mini-stub + label collé, puis ORBITAL ?
+\draw[arrow] (more.south) -- ++(0,-1mm) node[near start,right,yshift=-5pt]{Oui} -- (isorb.north);
+% Non -> fin : mini-stub + label collé, puis rail FIN distinct jusqu’à close
+\draw[arrow]
+  (more.east) -- ++(9mm,0) node[near start,above]{Non}
+  -- (\xRfin, -10.0)
+  -- (\xRfin, -19.6 +2.5)
+  -- (\xC,    -19.6 +2.5) % coude horizontal pour éviter la diagonale
+  -- (close.north);
+% IF "ORBITAL ?"
+% Non : vers rail gauche puis bloc copyline (label collé)
+\draw[arrow] (isorb.west) -- ++(-9mm,0) node[near start,above]{Non}
+  -- (\xL + 1, -12.2) -- ([xshift=10mm]copyline.north);
+% Oui : direct vers orbproc (label collé)
+\draw[arrow] (isorb.south) -- ++(0,-1mm) node[near start,right,yshift=-5pt]{Oui} -- (orbproc.north);
+
+% Retour Non (copie) : remonte proprement vers la lecture suivante
+\draw[arrow] ([xshift=-10mm]copyline.north) |- (readln.west);
+
+% Après traitement d'un bloc : rail RETOUR (distinct) -> readln
+\draw[arrow] (orbproc.east) -- (\xRret, -15.2) |- (readln.east);
+
+\end{tikzpicture}

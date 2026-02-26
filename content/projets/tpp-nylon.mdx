@@ -1,0 +1,239 @@
+---
+title: "Synthèse et Propriétés du Nylon 6,6"
+date: "2024-01-01"
+description: "Projet de chimie des polymères : synthèse du nylon 6,6 par trois voies distinctes (chlorure d'adipoyle, acide adipique, estérification), puis caractérisation par IR, DSC et essai de traction."
+tags: ["Polymères", "Synthèse", "Nylon", "DSC", "IR", "TPP"]
+category: "Chimie des Matériaux"
+pdf: "/pdfs/tpp-nylon.pdf"
+---
+
+> **TPP Polymère** — Chimie ParisTech PSL
+> Réalisé avec **Nicolas Gervasoni**
+
+## Introduction
+
+### Présentation générale
+
+Le **Nylon** est un polymère synthétique semi-cristallin appartenant à la famille des **polyamides** (PA). Les PA sont constitués de monomères liés par des groupements amides ; ils peuvent être naturels (laine, soie) ou synthétiques. Les PA synthétiques sont généralement produits à partir d'acides dicarboxyliques et de diamines dérivés du pétrole, par polymérisation par condensation ou par ouverture de cycle. On en distingue trois grandes catégories : PA aliphatiques, polyphtalamides et PA aromatiques.
+
+Le nylon, basé sur des PA aliphatiques ou semi-aromatiques, a été inventé en **1935** par Wallace Carothers chez DuPont et commercialisé en **1938** sous la forme du Nylon 6,6. Il révolutionne l'industrie textile en offrant une alternative solide aux fibres naturelles, et trouve aujourd'hui des applications dans l'automobile, l'aéronautique, la biomédecine (ingénierie tissulaire depuis les années 1970) et la fabrication de pièces structurelles par moulage par injection.
+
+### Structure du Nylon 6,6
+
+<figure>
+  <img src="/images/tpp-nylon/nylon66-structure.png" alt="Structure du Nylon 6,6" />
+  <figcaption>Structure du Nylon 6,6</figcaption>
+</figure>
+
+Le Nylon 6,6 tire son nom du fait que la molécule comporte **6 atomes de carbone** entre les deux carbonyles C=O et **6 atomes de carbone** entre les deux groupements NH. Il existe d'autres types (Nylon 12, Nylon 4,6, etc.) :
+
+<figure>
+  <img src="/images/tpp-nylon/nylon12-structure.png" alt="Nylon 12" />
+  <figcaption>Nylon 12</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/nylon46-structure.png" alt="Nylon 4,6" />
+  <figcaption>Nylon 4,6</figcaption>
+</figure>
+
+Il est formé par la réaction de deux monomères à 6 carbones chacun :
+
+| Monomère | Rôle |
+|---|---|
+| Acide adipique | Apporte les groupements carboxyle |
+| Hexaméthylènediamine | Apporte les groupements amine |
+
+<figure>
+  <img src="/images/tpp-nylon/acide-adipique.png" alt="Acide adipique" />
+  <figcaption>Acide adipique</figcaption>
+</figure>
+
+La moitié de la production mondiale de Nylon 6,6 est utilisée sous forme de **fibres textiles**, le reste sous forme de **résines techniques** (résistance mécanique, thermique et chimique élevées).
+
+**Objectif du projet :** synthétiser du Nylon 6,6 par différentes voies, puis étudier ses propriétés physiques et spectroscopiques.
+
+---
+
+## Partie expérimentale
+
+Trois voies de synthèse ont été explorées sur 3 jours de projet.
+
+### Voie 1 — Synthèse par le chlorure d'adipoyle
+
+<figure>
+  <img src="/images/tpp-nylon/reaction-chlorure.png" alt="Réaction de formation du Nylon 6,6 via le chlorure d'acide" />
+  <figcaption>Réaction de formation du Nylon 6,6 via le chlorure d'acide</figcaption>
+</figure>
+
+**Protocole :**
+- 10⁻² mol d'hexaméthylènediamine (1,16 g) dissous dans une solution aqueuse de NaOH à 10⁻² mol/L
+- 10⁻² mol de chlorure d'adipoyle (1,83 g) dissous dans du dichlorométhane (DCM)
+- La phase aqueuse (moins dense) est versée **très lentement** sur la phase organique (plus dense), pour favoriser la formation de longues chaînes à l'interface
+
+<figure>
+  <img src="/images/tpp-nylon/photo-becher.jpeg" alt="Bécher contenant les deux phases" />
+  <figcaption>Bécher contenant les deux phases</figcaption>
+</figure>
+
+Le polymère se forme à l'interface des deux phases en quelques minutes. Il est récupéré à l'aide d'un agitateur en verre en tirant le film progressivement.
+
+<figure>
+  <img src="/images/tpp-nylon/recovery-step1.jpeg" alt="Récupération du nylon — étape 1" />
+  <figcaption>Récupération du nylon — étape 1</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/recovery-step2.jpeg" alt="Récupération du nylon — étape 2" />
+  <figcaption>Récupération du nylon — étape 2</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/recovery-step3.jpeg" alt="Récupération du nylon — étape 3" />
+  <figcaption>Récupération du nylon — étape 3</figcaption>
+</figure>
+
+**Résultat :** 624 mg de polymère sous forme de film continu.
+
+### Voie 2 — Synthèse par l'acide adipique
+
+<figure>
+  <img src="/images/tpp-nylon/reaction-acide-adipique.png" alt="Réaction via l'acide adipique" />
+  <figcaption>Réaction via l'acide adipique</figcaption>
+</figure>
+
+Même protocole que la voie 1, en substituant le chlorure d'adipoyle par l'acide adipique dissous dans du DCM.
+
+**Résultat :** obtention d'une **poudre blanche** et non d'un film. La polymérisation n'a pas eu lieu correctement — la cinétique de réaction de l'acide est trop lente par rapport au chlorure d'acide, activé. Un catalyseur adapté serait nécessaire.
+
+### Voie 3 — Synthèse par estérification de l'acide adipique
+
+Cette voie suit le protocole de Jouffret (1996) et passe par un précurseur intermédiaire, l'**α-amino-ω-ester monoamide** (AME-6,6).
+
+<figure>
+  <img src="/images/tpp-nylon/schema-monoamide.png" alt="Schéma de la réaction via le monoamide" />
+  <figcaption>Schéma de la réaction via le monoamide</figcaption>
+</figure>
+
+**Étape 1 — Synthèse du diméthyl adipoyle (DMA) par estérification de Fischer :**
+
+<figure>
+  <img src="/images/tpp-nylon/esterification-fischer.png" alt="Estérification de Fischer de l'acide adipique" />
+  <figcaption>Estérification de Fischer de l'acide adipique</figcaption>
+</figure>
+
+Acide adipique (3,6 g, 0,1 mol) + méthanol en large excès → le méthanol excédentaire est éliminé à l'évaporateur rotatif. Le DMA obtenu est liquide à température ambiante.
+
+**Étape 2 — Synthèse de l'AME-6,6 :**
+
+Dans un tricol de 250 mL, sous atmosphère inerte (argon) :
+- DMA (3,6 g) + hexaméthylènediamine (2,4 g) + phénol catalytique (0,3 g, 3×10⁻³ mol)
+- Température maintenue à **50 °C** pendant 30 min → cristallisation d'un solide blanc
+- Lavage à l'eau (élimination du phénol et des réactifs résiduels), filtration Büchner, séchage sur pompe à palette
+- **474 mg d'AME-6,6** obtenus
+
+**Étape 3 — Polymérisation de l'AME-6,6 :**
+
+L'AME-6,6 est chauffé à **270 °C** sous 5 bar ; le méthanol formé est éliminé au fur et à mesure. La réaction est stoppée quand la viscosité devient effective.
+
+<figure>
+  <img src="/images/tpp-nylon/photo-montage-tricol.jpeg" alt="Photo du montage de polymérisation" />
+  <figcaption>Photo du montage de polymérisation</figcaption>
+</figure>
+
+---
+
+## Résultats et discussion
+
+### Rendements des trois voies
+
+| Voie | Masse de Nylon 6,6 | Rendement |
+|---|---|---|
+| 1 — Chlorure d'adipoyle | 624 mg | 21 % |
+| 2 — Acide adipique | 524 mg | — |
+| 3 — Estérification | 474 mg | 8 % |
+
+La **voie 1** (chlorure d'adipoyle) est la plus efficace et la plus simple. La voie 2 n'a pas permis d'obtenir un film polymère. La voie 3, bien que plus complexe, confirme la faisabilité de la synthèse via un précurseur ester.
+
+> Une chromatographie d'exclusion stérique aurait permis d'obtenir la masse molaire et le degré de polymérisation, mais les solvants nécessaires à la dissolution du nylon n'étaient pas disponibles.
+
+### Caractérisation spectroscopique (IR)
+
+Les caractérisations par spectroscopie infrarouge ont été réalisées sur les réactifs et sur le nylon issu de la voie 3 :
+
+- **Acide adipique :** bande large ~3400 cm⁻¹ (OH de l'acide carboxylique)
+- **Hexaméthylènediamine :** deux bandes fines à 3200–3500 cm⁻¹ (NH₂ amine primaire)
+- **Chlorure d'adipoyle :** absence de la bande OH — confirme la substitution du carboxyle par le chlorure d'acide
+- **Nylon synthétisé :** pic large unique ~3400 cm⁻¹ caractéristique des **amides secondaires** → confirme la structure polyamide attendue
+
+La **RMN** du nylon n'a pas été concluante : le polymère est très peu soluble dans les solvants usuels (DMSO-d, CDCl₃), rendant le spectre inexploitable.
+
+### Température de transition vitreuse — DSC
+
+La DSC mesure les variations de capacité thermique en fonction de la température, permettant de repérer la température de transition vitreuse $T_g$.
+
+<figure>
+  <img src="/images/tpp-nylon/dsc-cycle1.jpeg" alt="DSC du nylon — premier cycle" />
+  <figcaption>DSC du nylon — premier cycle</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/dsc-cycle2.jpeg" alt="DSC du nylon — deuxième cycle (échantillon dégradé)" />
+  <figcaption>DSC du nylon — deuxième cycle (échantillon dégradé)</figcaption>
+</figure>
+
+La littérature donne $T_g \approx 57\,°C$ pour le Nylon 6,6. Les spectres obtenus diffèrent de la forme attendue, rendant la détermination de $T_g$ peu fiable. On observe par ailleurs une **différence nette entre les deux cycles** : au second passage (échantillon dégradé thermiquement), la capacité thermique semble proportionnelle à la température, signe d'une modification irréversible de la structure.
+
+### Propriétés mécaniques — Essai de traction
+
+<figure>
+  <img src="/images/tpp-nylon/courbe-traction.png" alt="Courbe charge–élongation de l'échantillon de nylon" />
+  <figcaption>Courbe charge–élongation de l'échantillon de nylon</figcaption>
+</figure>
+
+Échantillon testé : 0,6 mm d'épaisseur × 4 mm de largeur.
+
+- Charge maximale supportée : **5,07 N**
+- Contrainte calculée : **21 × 10⁵ Pa** (~2,1 MPa)
+- Valeur littérature pour le Nylon 6,6 : jusqu'à **40 MPa**
+
+L'écart important s'explique par la **nature fibreuse** de l'échantillon synthétisé : il est difficile de définir une section de travail homogène, et l'entièreté du matériau ne résiste pas uniformément à la contrainte appliquée.
+
+<figure>
+  <img src="/images/tpp-nylon/nylon-banc-traction.jpeg" alt="Nylon sur le banc de traction" />
+  <figcaption>Nylon sur le banc de traction</figcaption>
+</figure>
+
+---
+
+## Conclusion
+
+Ce projet a permis de synthétiser le Nylon 6,6 par trois méthodes distinctes. La **voie par chlorure d'adipoyle** s'est avérée la plus efficace (η = 21 %), grâce à la meilleure réactivité du chlorure d'acide à l'interface eau/DCM.
+
+Les caractérisations IR ont confirmé la structure polyamide attendue. En revanche :
+- La **RMN** est restée inexploitable en raison de la faible solubilité du polymère
+- La **DSC** a montré une dégradation de l'échantillon au second cycle thermique
+- L'**essai de traction** a donné une contrainte bien inférieure aux valeurs théoriques, du fait de la morphologie fibreuse de l'échantillon
+
+**Perspectives :** utilisation de catalyseurs pour améliorer la cinétique de la voie 2 (acide adipique), mise en forme homogène des échantillons (moulage par injection) pour des mesures mécaniques et thermiques plus fiables, et chromatographie d'exclusion stérique pour déterminer les masses molaires.
+
+---
+
+## Annexe — Spectres IR et RMN
+
+<figure>
+  <img src="/images/tpp-nylon/ir-acide-adipique.jpeg" alt="Spectre IR — Acide adipique" />
+  <figcaption>Spectre IR — Acide adipique</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/ir-hexamethylene.jpeg" alt="Spectre IR — Hexaméthylènediamine" />
+  <figcaption>Spectre IR — Hexaméthylènediamine</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/ir-chlorure-adipoyle.jpeg" alt="Spectre IR — Chlorure d'adipoyle" />
+  <figcaption>Spectre IR — Chlorure d'adipoyle</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/ir-nylon.jpeg" alt="Spectre IR — Nylon 6,6 synthétisé" />
+  <figcaption>Spectre IR — Nylon 6,6 synthétisé</figcaption>
+</figure>
+<figure>
+  <img src="/images/tpp-nylon/rmn-nylon.jpeg" alt="Spectre RMN ¹H du nylon 6,6 dans CDCl₃" />
+  <figcaption>Spectre RMN ¹H du nylon 6,6 dans CDCl₃</figcaption>
+</figure>
