@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 const formations = [
   {
-    period: '2022 — 2026',
+    period: '2023 — 2026',
     school: 'Chimie ParisTech · PSL',
     degree: 'Diplôme d\'ingénieur',
     detail: 'Chimie, physique, science des matériaux, informatique scientifique. Cours : Propriétés quantiques des matériaux, Chimie du solide, Science des surfaces, Analyse de données.',
