@@ -12,13 +12,13 @@ const formations = [
     detail: 'Chimie, physique, science des matériaux, informatique scientifique. Cours : Propriétés quantiques des matériaux, Chimie du solide, Science des surfaces, Analyse de données.',
   },
   {
-    period: '2020 — 2022',
+    period: '2021 — 2023',
     school: 'Lycée Gustave Eiffel · Bordeaux',
     degree: 'Classes préparatoires PSI*/PCSI',
     detail: 'Mathématiques, physique, sciences de l\'ingénieur. Préparation aux concours nationaux.',
   },
   {
-    period: '2020',
+    period: '2021',
     school: 'Lycée de Borda · Dax',
     degree: 'Baccalauréat (Mention Bien)',
     detail: 'Section européenne (Espagnol).',
